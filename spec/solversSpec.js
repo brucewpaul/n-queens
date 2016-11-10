@@ -53,6 +53,7 @@ describe('solvers', function() {
       // Check 2 and 3 for no solution
       [2, 3].map(function (n) {
         var solutionBoard = new Board(findNQueensSolution(n));
+        console.log(solutionBoard);
         var numPieces = _.reduce(solutionBoard.rows(), function(memo, row) {
           return memo + _.reduce(row, function(memo, col) {
             return memo + col;
