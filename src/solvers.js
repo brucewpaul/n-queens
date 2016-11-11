@@ -13,7 +13,30 @@
 
 // return a matrix (an array of arrays) representing a single nxn chessboard, with n rooks placed such that none of them can attack each other
 
+window.mirrorArray = function(arr) {
+  for ( var i = 0; i < arr.length; i++) {
+    arr[i].reverse();
+  }
+  return arr;
+};
 
+window.mirrorSolutions = function(solutions, n) {
+
+  var solutionsCopy = jQuery.extend(true, [], solutions);
+
+  for ( var i = 0; i < solutionsCopy.length; i++) {
+    if ( n % 2 === 0 ) {
+      solutions.push( mirrorArray(solutionsCopy[i]) );
+    } else {
+      if ( solutionsCopy[i][Math.ceil( n / 2 )] === 0 ) {
+        solutions.push( mirrorArray(solutionsCopy[i]) );
+      } else {
+        return solutions;
+      }
+    }
+  }
+  return solutions;
+};
 
 window.findNRooksSolution = function(n) {
 
